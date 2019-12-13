@@ -15,7 +15,7 @@ import cucumber.api.junit.Cucumber;
                 //"@aciuvaga"
         },
         plugin = { "pretty", "html:target/cucumber" }
-)
+
 public class TestRunner {
 
 }
