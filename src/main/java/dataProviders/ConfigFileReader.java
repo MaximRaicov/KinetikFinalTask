@@ -1,17 +1,17 @@
 package dataProviders;
 
-import enums.DriverType;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import enums.DriverType;
+
 public class ConfigFileReader {
 
     private Properties properties;
-    private final String propertyFilePath = "configs/Configuration.properties";
+    private final String propertyFilePath = "resources/configs/configuration.properties";
 
     public ConfigFileReader() {
         BufferedReader reader;
@@ -26,7 +26,7 @@ public class ConfigFileReader {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            throw new RuntimeException("Configuration.properties not found at " + propertyFilePath);
+            throw new RuntimeException("configuration.properties not found at " + propertyFilePath);
         }
     }
 
@@ -34,7 +34,7 @@ public class ConfigFileReader {
         String driverPath = properties.getProperty("driverPath");
         if (driverPath != null) return driverPath;
         else
-            throw new RuntimeException("Driver Path not specified in the Configuration.properties file for the Key:driverPath");
+            throw new RuntimeException("Driver Path not specified in the configuration.properties file for the Key:driverPath");
     }
 
     public long getImplicitlyWait() {
@@ -53,7 +53,7 @@ public class ConfigFileReader {
         String url = properties.getProperty("url");
         if (url != null) return url;
         else
-            throw new RuntimeException("Application Url not specified in the Configuration.properties file for the Key:url");
+            throw new RuntimeException("Application Url not specified in the configuration.properties file for the Key:url");
     }
 
     public DriverType getBrowser() {
@@ -61,7 +61,7 @@ public class ConfigFileReader {
         if (browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
         else if (browserName.equals("iexplorer")) return DriverType.INTERNET_EXPLORER;
         else
-            throw new RuntimeException("Browser Name Key value in Configuration.properties is not matched : " + browserName);
+            throw new RuntimeException("Browser Name Key value in configuration.properties is not matched : " + browserName);
     }
 
     public Boolean getBrowserWindowSize() {

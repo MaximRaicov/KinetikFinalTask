@@ -10,11 +10,12 @@ import cucumber.api.junit.Cucumber;
         glue = { "stepDefinition", "hooks" },
         features = { "src/test/resources/features" },
         tags = {
-                "@AM"
-                // ""
-        }
-        // plugin = {"pretty", "html:target/cucumber"}
-)
+                //"@amiordan"
+                //"@mraicov"
+                //"@aciuvaga"
+        },
+        plugin = { "pretty", "html:target/cucumber" }
+
 public class TestRunner {
 
 }

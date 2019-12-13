@@ -1,10 +1,9 @@
 package managers;
 
-import dataProviders.ConfigFileReader;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 
-import static org.junit.jupiter.api.Assertions.*;
+import dataProviders.ConfigFileReader;
 
 class WebDriverManagerTest {
     WebDriverManager webDriverManager;
