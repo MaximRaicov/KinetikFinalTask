@@ -1,7 +1,5 @@
 package hooks;
 
-import org.openqa.selenium.WebDriver;
-
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import dataProviders.ConfigFileReader;
@@ -10,20 +8,13 @@ import stepDefinition.AbstractStepDef;
 
 public class TestHooks extends AbstractStepDef {
 
-    private ConfigFileReader fileReader;
+    private ConfigFileReader fileReader = new ConfigFileReader();
 
-    private WebDriverManager webDriverManager;
-
-    private static void setDriver(WebDriver driver) {
-        webDriver = driver;
-    }
+    private WebDriverManager webDriverManager = new WebDriverManager();
 
     @Before
     public void launchChromeDriver() {
-        webDriverManager = new WebDriverManager();
-        fileReader = new ConfigFileReader();
-        setDriver(webDriverManager.getDriver());
-        webDriver.navigate().to(fileReader.getApplicationUrl());
+        webDriver = webDriverManager.getDriver();
     }
 
     @After
