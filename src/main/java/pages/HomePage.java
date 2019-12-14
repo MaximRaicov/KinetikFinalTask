@@ -11,9 +11,6 @@ public class HomePage extends PageObject {
 
     private String pageUrl = "https://demo.nopcommerce.com/";
 
-    @FindBy(xpath = "//ul[@class='top-menu notmobile']//a[contains(text(),'Electronics')]")
-    private WebElement category;
-
     @FindBy(id = "small-searchterms")
     private WebElement searchField;
 

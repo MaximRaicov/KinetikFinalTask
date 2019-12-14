@@ -29,4 +29,5 @@ public class MyAccountPage extends PageObject {
     public MyAccountPage(final WebDriver driver) {
         super(driver);
     }
+
 }

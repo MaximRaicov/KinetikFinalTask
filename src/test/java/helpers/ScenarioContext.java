@@ -1,4 +1,4 @@
-package stepDefinition;
+package helpers;
 
 import pages.PageObject;
 

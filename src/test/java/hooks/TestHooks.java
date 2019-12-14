@@ -19,4 +19,3 @@ public class TestHooks extends AbstractStepDef {
         webDriverManager.closeDriver();
     }
 }
-
