@@ -9,6 +9,8 @@ import lombok.Getter;
 @Getter
 public class HomePage extends PageObject {
 
+    private String pageUrl = "https://demo.nopcommerce.com/";
+
     @FindBy(xpath = "//ul[@class='top-menu notmobile']//a[contains(text(),'Electronics')]")
     private WebElement category;
 
@@ -17,6 +19,12 @@ public class HomePage extends PageObject {
 
     @FindBy(className = "button-1 search-box-button")
     private WebElement searchButton;
+
+    @FindBy(className = "ico-register")
+    private WebElement registerButton;
+
+    @FindBy(className = "ico-login")
+    private WebElement loginButton;
 
     public HomePage(final WebDriver driver) {
         super(driver);
