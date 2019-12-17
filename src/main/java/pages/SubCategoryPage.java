@@ -9,6 +9,9 @@ import lombok.Getter;
 @Getter
 public class SubCategoryPage extends PageObject {
 
+    //TODO: add required url for selected subcategory
+    private String pageUrl = "";
+
     @FindBy(xpath = "//h2[@class='product-title']//a[contains(text(),'HTC One Mini Blue')]")
     private WebElement accessProduct;
 

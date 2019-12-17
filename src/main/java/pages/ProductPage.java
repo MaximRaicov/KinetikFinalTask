@@ -9,6 +9,9 @@ import lombok.Getter;
 @Getter
 public class ProductPage extends PageObject {
 
+    //TODO: add required url for selected product
+    private String pageUrl = "";
+
     @FindBy(xpath = "//input[@id='add-to-cart-button-19']")
     private WebElement addToCartButton;
 
@@ -16,10 +19,10 @@ public class ProductPage extends PageObject {
     private WebElement addToWishButton;
 
     @FindBy(xpath = "//span[@class='cart-label']")
-    private WebElement ShoppingCartLink;
+    private WebElement ShoppingCartButton;
 
     @FindBy(xpath = "//span[@class='wishlist-label']")
-    private WebElement WishListLink;
+    private WebElement WishListButton;
 
     public ProductPage(final WebDriver driver) {
         super(driver);

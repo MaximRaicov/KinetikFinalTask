@@ -9,6 +9,9 @@ import lombok.Getter;
 @Getter
 public class CategoryPage extends PageObject {
 
+    //TODO: add required url for selected category
+    private String pageUrl = "";
+
     @FindBy(xpath = "//h2[@class='title']//a[contains(text(),'Cell phones')]")
     private WebElement subCategory;
 

@@ -9,6 +9,8 @@ import lombok.Getter;
 @Getter
 public class ShoppingCartPage extends PageObject {
 
+    private String pageUrl = "https://demo.nopcommerce.com/cart";
+
     @FindBy(xpath = "//input[@id='removefromcart15404']")
     private WebElement removeCheckboxFromCart;
 

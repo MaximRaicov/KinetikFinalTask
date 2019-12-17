@@ -12,7 +12,7 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         glue = { "stepDefinition", "hooks" },
         features = { "src/test/resources/features" },
-        tags = { "not @amiordan", "not @mraicov", "not @aciuvaga" },
+        tags = { "~@amiordan", "~@mraicov", "~@aciuvaga" },
         plugin = { "pretty", "html:target/cucumber" })
 public class TestRunner {
 

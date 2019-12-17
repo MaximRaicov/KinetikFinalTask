@@ -9,6 +9,8 @@ import lombok.Getter;
 @Getter
 public class WishListPage extends PageObject {
 
+    private String pageUrl = "https://demo.nopcommerce.com/wishlist";
+
     @FindBy(xpath = "//input[@name='removefromcart']")
     private WebElement removeCheckBoxFromWishList;
 
