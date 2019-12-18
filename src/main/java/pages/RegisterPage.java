@@ -29,14 +29,8 @@ public class RegisterPage extends PageObject {
     @FindBy(id = "register-button")
     private WebElement registerButton;
 
-    @FindBy(xpath = "//h1[contains(text(),'Register')]")
-    private WebElement registerText;
-
-    @FindBy(className = "result")
-    private WebElement registrationResult;
-
     @FindBy(xpath = "//p[contains(text(),'Password must meet the following rules:')]")
-    private WebElement registerWarning;
+    private WebElement warningMessage;
 
     public RegisterPage(final WebDriver driver) {
         super(driver);

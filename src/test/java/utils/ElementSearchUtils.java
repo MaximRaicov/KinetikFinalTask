@@ -1,18 +1,19 @@
-package helpers;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import pages.PageObject;
-import stepDefinition.AbstractStepDef;
+package utils;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
-public class Reflection extends AbstractStepDef {
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import pages.PageObject;
+import stepDefinition.AbstractStepDef;
+
+public class ElementSearchUtils extends AbstractStepDef {
 
     public static PageObject getPage(String pageName) {
-        Class<?> clazz = null;
+        Class<?> clazz;
         PageObject pageObject = null;
         try {
             clazz = Class.forName("pages.".concat(pageName));

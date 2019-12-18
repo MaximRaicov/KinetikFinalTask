@@ -1,13 +1,13 @@
 package stepDefinition;
 
-import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import pages.CategoryPage;
+
+import cucumber.api.java.en.When;
 import pages.SubCategoryPage;
 
-import static helpers.Reflection.getElementByName;
-import static helpers.Reflection.getPage;
+import static utils.ElementSearchUtils.getElementByName;
+import static utils.ElementSearchUtils.getPage;
 import static utils.TestUtils.getPageObjectName;
 
 public class CategoryPageStepDef extends AbstractStepDef {
