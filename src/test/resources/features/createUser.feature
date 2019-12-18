@@ -1,7 +1,7 @@
 Feature: Create new user
 
   Background:
-    Given Home page is displayed
+    Given user is on Home page
 
   Scenario Outline: Check user can register with valid credentials
     When User press on Register link

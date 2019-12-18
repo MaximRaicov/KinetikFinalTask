@@ -1,10 +1,9 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import lombok.Getter;
 
 @Getter
 public class SubCategoryPage extends PageObject {
@@ -14,6 +13,12 @@ public class SubCategoryPage extends PageObject {
 
     @FindBy(xpath = "//h2[@class='product-title']//a[contains(text(),'HTC One Mini Blue')]")
     private WebElement accessProduct;
+
+    @FindBy(css = " .product-grid")
+    private WebElement productGrid;
+
+    @FindBy(xpath = "//div[@class='page-title']/h1")
+    private WebElement pageTitle;
 
     public SubCategoryPage(final WebDriver driver) {
         super(driver);

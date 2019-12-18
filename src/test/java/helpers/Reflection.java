@@ -1,15 +1,13 @@
 package helpers;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import pages.PageObject;
+import stepDefinition.AbstractStepDef;
+
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import pages.PageObject;
-import stepDefinition.AbstractStepDef;
-import stepDefinition.ScenarioContext;
 
 public class Reflection extends AbstractStepDef {
 
@@ -35,9 +33,14 @@ public class Reflection extends AbstractStepDef {
             field.setAccessible(true);
             webElement = (WebElement) field.get(ScenarioContext.getCurrentPage());
         } catch (NoSuchFieldException | IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        finally {
+            try {
+                field = ScenarioContext.getCurrentPage().getClass().getSuperclass().getDeclaredField(elementName);
+                field.setAccessible(true);
+                webElement = (WebElement) field.get(ScenarioContext.getCurrentPage());
+            } catch (NoSuchFieldException | IllegalAccessException ex) {
+                ex.printStackTrace();
+            }
+        } finally {
             if (field != null) {
                 field.setAccessible(false);
             }

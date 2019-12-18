@@ -29,4 +29,5 @@ public class LoginPage extends PageObject {
     public LoginPage(final WebDriver driver) {
         super(driver);
     }
+
 }
