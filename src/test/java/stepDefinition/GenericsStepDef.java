@@ -1,4 +1,5 @@
 package stepDefinition;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -22,6 +23,7 @@ public class GenericsStepDef extends AbstractStepDef {
                 is(getPage(pageName.concat("Page")).getPageUrl()));
         waitForPageLoaded();
     }
+
     @When("^user press on '(.*)' (Button|Field|Checkbox)$")
     public void userPressOnButton(String elementName, String extension) {
         implicitlyWait(5);
@@ -30,14 +32,20 @@ public class GenericsStepDef extends AbstractStepDef {
     }
 
     @And("^user clicks on '(.*)' (Button|HeaderButton) and move to '(.*)' page$")
-    public void userClicksOnElementAndMoveToPage(String elementName, String extencion, String pageName) {
+    public void userClicksOnElementAndMoveToPage(String elementName, String extension, String pageName) {
         waitForPageLoaded();
-        if (extencion.equals("Button"))
-            getElementByName(pageName.toLowerCase().concat("Form"))
-                    .findElement(By.cssSelector("a[href='/" + elementName + "']")).click();
-        if (extencion.equals("HeaderButton")) {
-            getElementByName("headerForm").findElement(By.cssSelector("a[href='/" + elementName + "']")).click();
+        switch (extension) {
+            case "Button":
+                getElementByName(pageName.toLowerCase().concat("Form"))
+                        .findElement(By.cssSelector("a[href='/" + elementName + "']")).click();
+                ScenarioContext.setCurrentPage(getPage(pageName.concat("Page")));
+                break;
+            case "HeaderButton":
+                getElementByName("headerForm").findElement(By.cssSelector("a[href='/" + elementName + "']")).click();
+                ScenarioContext.setCurrentPage(getPage(pageName.concat("Page")));
+                break;
         }
-        ScenarioContext.setCurrentPage(getPage(pageName.concat("Page")));
+
     }
+
 }
