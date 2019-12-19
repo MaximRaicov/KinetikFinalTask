@@ -13,7 +13,8 @@ import cucumber.api.junit.Cucumber;
         glue = {"stepDefinition", "hooks"},
         features = {"src/test/resources/features"},
         tags = {"~@amiordan", "~@mraicov", "~@aciuvaga"},
-        plugin = {"pretty", "html:target/cucumber"})
+        plugin = { "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/report.html"},
+        monochrome = true)
 public class TestRunner {
 
 }
