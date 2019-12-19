@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 public class ProductPage extends PageObject {
 
-    //TODO: add required url for selected product
+    //TODO: add URL for product details page
     private String pageUrl = "";
 
     @FindBy(xpath = "//input[@id='add-to-cart-button-19']")

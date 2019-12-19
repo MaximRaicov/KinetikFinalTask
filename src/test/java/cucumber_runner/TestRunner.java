@@ -1,11 +1,12 @@
 package cucumber_runner;
 
-import cucumber.api.CucumberOptions;
-import cucumber.api.junit.Cucumber;
 import org.junit.runner.RunWith;
 
+import cucumber.api.CucumberOptions;
+import cucumber.api.junit.Cucumber;
+
 /**
- * before running any test, need to be removed #not before used tag
+ * before running any test, need to be removed #~ before used tag
  */
 @RunWith(Cucumber.class)
 @CucumberOptions(

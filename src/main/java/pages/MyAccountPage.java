@@ -23,9 +23,6 @@ public class MyAccountPage extends PageObject {
     @FindBy(id = "save-info-button")
     private WebElement saveButton;
 
-    @FindBy(xpath = "//h1[contains(text(),'My account - Customer info')]")
-    private WebElement myAccountText;
-
     public MyAccountPage(final WebDriver driver) {
         super(driver);
     }

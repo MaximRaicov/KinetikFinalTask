@@ -14,9 +14,6 @@ public class UserAccountPage extends PageObject {
     @FindBy(className = "ico-account")
     private WebElement myAccountButton;
 
-    @FindBy(className = "ico-logout")
-    private WebElement logoutButton;
-
     public UserAccountPage(final WebDriver driver) {
         super(driver);
     }

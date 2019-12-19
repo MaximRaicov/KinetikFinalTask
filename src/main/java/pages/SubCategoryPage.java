@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 @Getter
 public class SubCategoryPage extends PageObject {
 
-    //TODO: add required url for selected subcategory
+    //TODO: add subcategory URL
     private String pageUrl = "";
 
     @FindBy(xpath = "//h2[@class='product-title']//a[contains(text(),'HTC One Mini Blue')]")

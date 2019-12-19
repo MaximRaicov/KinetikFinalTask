@@ -21,10 +21,7 @@ public class LoginPage extends PageObject {
     private WebElement loginButton;
 
     @FindBy(xpath = "//li[contains(text(),'The credentials provided are incorrect')]")
-    private WebElement errorMessage;
-
-    @FindBy(xpath = "//h1[contains(text(),'Welcome, Please Sign In!')]")
-    private WebElement welcomeText;
+    private WebElement warningMessage;
 
     public LoginPage(final WebDriver driver) {
         super(driver);

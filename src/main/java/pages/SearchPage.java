@@ -9,7 +9,7 @@ import lombok.Getter;
 @Getter
 public class SearchPage extends PageObject {
 
-    //TODO: add required url for searched product
+    //TODO: add URL for searched product
     private String pageUrl = "";
 
     @FindBy(xpath = "//h2[@class='product-title']//a[contains(text(),'HTC One Mini Blue')]")
