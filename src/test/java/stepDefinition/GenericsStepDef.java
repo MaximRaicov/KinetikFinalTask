@@ -1,5 +1,7 @@
 package stepDefinition;
 
+import java.util.Map;
+
 import org.openqa.selenium.By;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -11,6 +13,7 @@ import utils.ScenarioContext;
 
 import static utils.ActionUtils.clickOnElement;
 import static utils.AssertUtils.assertThat;
+import static utils.AssertUtils.assertTrue;
 import static utils.ElementSearchUtils.getElementByName;
 import static utils.ElementSearchUtils.getPage;
 
@@ -44,7 +47,18 @@ public class GenericsStepDef extends AbstractStepDef {
                 ScenarioContext.setCurrentPage(getPage(pageName.concat("Page")));
                 break;
         }
-
     }
 
+    @When("^user populates fields with following values:$")
+    public void userPopulatesFieldsWithFollowingValues(Map<String, String> data) {
+        waitForPageLoaded();
+        data.forEach((key, value) -> getElementByName(key).sendKeys(value));
+    }
+
+    @Then("^'(.*)' (Button|Field|Message|)\\s*is displayed$")
+    public void elementSuccessfullyDisplayed(String elementName, String extension) {
+        waitForPageLoaded();
+        waitVisibility(getElementByName(elementName.concat(extension)));
+        assertTrue(String.format("%s element is displayed", elementName), getElementByName(elementName.concat(extension)).isDisplayed());
+    }
 }
