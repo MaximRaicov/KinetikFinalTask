@@ -2,11 +2,13 @@ package stepDefinition;
 
 import java.util.Map;
 
-import static org.junit.Assert.assertNotEquals;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static utils.AssertUtils.assertThat;
 import static utils.ElementSearchUtils.getElementByName;
 
 public class MyAccountStepDef extends AbstractStepDef {
@@ -25,7 +27,8 @@ public class MyAccountStepDef extends AbstractStepDef {
     public void customerInformationSuccessfullyUpdated(String elementName, String extension) {
         implicitlyWait(5);
         final String afterEdit = getElementByName(elementName.concat(extension)).getAttribute("value");
-        assertNotEquals("Edit unsuccessful", afterEdit, beforeEdit);
+        assertThat(String.format("Field successfully updated, before edit value: %s\nafter edit value: %s", beforeEdit, afterEdit),
+                afterEdit, is(not(beforeEdit)));
     }
 
 }
