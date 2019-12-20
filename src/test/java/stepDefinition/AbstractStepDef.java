@@ -1,7 +1,6 @@
 package stepDefinition;
 
-import java.util.concurrent.TimeUnit;
-
+import dataProviders.ConfigFileReader;
 import org.junit.Assert;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -10,16 +9,15 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import dataProviders.ConfigFileReader;
+import java.util.concurrent.TimeUnit;
 
 public abstract class AbstractStepDef {
 
     protected static WebDriver webDriver;
-
     ConfigFileReader fileReader = new ConfigFileReader();
-
     private WebDriverWait wait;
 
+    //Wait Wrapper Method
     void waitVisibility(WebElement element) {
         wait = new WebDriverWait(webDriver, fileReader.getImplicitlyWait());
         wait.until(ExpectedConditions.visibilityOf(element));

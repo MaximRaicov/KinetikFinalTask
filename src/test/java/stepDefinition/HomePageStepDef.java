@@ -1,11 +1,10 @@
 package stepDefinition;
 
-import static org.hamcrest.CoreMatchers.is;
-
 import cucumber.api.java.en.Given;
 import pages.HomePage;
 
-import static utils.AssertUtils.assertThat;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static utils.ElementSearchUtils.getPage;
 import static utils.TestUtils.getPageObjectName;
 

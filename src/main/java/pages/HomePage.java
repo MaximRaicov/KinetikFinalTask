@@ -1,10 +1,9 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import lombok.Getter;
 
 @Getter
 public class HomePage extends PageObject {
@@ -26,4 +25,5 @@ public class HomePage extends PageObject {
     public HomePage(final WebDriver driver) {
         super(driver);
     }
+
 }

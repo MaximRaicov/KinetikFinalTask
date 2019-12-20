@@ -1,16 +1,14 @@
 package stepDefinition;
 
-import java.util.Map;
-
-import org.openqa.selenium.By;
-
-import static org.hamcrest.CoreMatchers.is;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.openqa.selenium.By;
 import utils.ScenarioContext;
 
+import java.util.Map;
+
+import static org.hamcrest.CoreMatchers.is;
 import static utils.ActionUtils.clickOnElement;
 import static utils.AssertUtils.assertThat;
 import static utils.AssertUtils.assertTrue;
@@ -26,7 +24,7 @@ public class GenericsStepDef extends AbstractStepDef {
         waitForPageLoaded();
     }
 
-    @When("^user press on '(.*)' (Button|Field|Checkbox)$")
+    @When("^user press on '(.*)' (Button|CheckBox)$")
     public void userPressOnButton(String elementName, String extension) {
         implicitlyWait(5);
         waitUntilElementIsClickable(getElementByName(elementName.concat(extension)));
@@ -38,12 +36,13 @@ public class GenericsStepDef extends AbstractStepDef {
         waitForPageLoaded();
         switch (extension) {
             case "Button":
-                getElementByName(pageName.toLowerCase().concat("Form"))
-                        .findElement(By.cssSelector("a[href='/" + elementName + "']")).click();
+                clickOnElement(getElementByName(pageName.toLowerCase().concat("Form"))
+                        .findElement(By.cssSelector("a[href='/" + elementName + "']")));
                 ScenarioContext.setCurrentPage(getPage(pageName.concat("Page")));
                 break;
             case "HeaderButton":
-                getElementByName("headerForm").findElement(By.cssSelector("a[href='/" + elementName + "']")).click();
+                clickOnElement(getElementByName("headerForm")
+                        .findElement(By.cssSelector("a[href='/" + elementName + "']")));
                 ScenarioContext.setCurrentPage(getPage(pageName.concat("Page")));
                 break;
         }

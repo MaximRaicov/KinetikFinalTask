@@ -1,30 +1,35 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import lombok.Getter;
-
 @Getter
 public class ProductPage extends PageObject {
 
-    //TODO: add URL for product details page
-    private String pageUrl = "";
+    private String pageUrl = "https://demo.nopcommerce.com/";
 
-    @FindBy(xpath = "//input[@id='add-to-cart-button-19']")
+    @FindBy(css = ".bar-notification.success")
+    private WebElement alertMessage;
+
+    @FindBy(css = "span.close")
+    private WebElement closeAlertMessage;
+
+    @FindBy(id = "add-to-cart-button-19")
     private WebElement addToCartButton;
 
-    @FindBy(xpath = "//input[@id='add-to-wishlist-button-19']")
+    @FindBy(id = "add-to-wishlist-button-19")
     private WebElement addToWishButton;
 
-    @FindBy(xpath = "//span[@class='cart-label']")
-    private WebElement ShoppingCartButton;
+    @FindBy(id = "topcartlink")
+    private WebElement shoppingCartButton;
 
-    @FindBy(xpath = "//span[@class='wishlist-label']")
-    private WebElement WishListButton;
+    @FindBy(css = ".header-links a[href='/wishlist']")
+    private WebElement wishListButton;
 
     public ProductPage(final WebDriver driver) {
         super(driver);
     }
+
 }
