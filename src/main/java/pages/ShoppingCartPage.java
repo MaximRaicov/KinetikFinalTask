@@ -31,6 +31,9 @@ public class ShoppingCartPage extends PageObject {
     @FindBy(css = ".value-summary strong")
     private WebElement orderTotalPrice;
 
+    @FindBy(xpath = "//a[@class='product-name']")
+    private WebElement actualItem;
+
     public ShoppingCartPage(final WebDriver driver) {
         super(driver);
     }

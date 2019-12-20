@@ -19,5 +19,4 @@ public class SubCategoryPage extends PageObject {
     public SubCategoryPage(final WebDriver driver) {
         super(driver);
     }
-
 }

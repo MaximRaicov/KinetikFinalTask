@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+
 @Getter
 public class HomePage extends PageObject {
 
@@ -13,7 +14,7 @@ public class HomePage extends PageObject {
     @FindBy(id = "small-searchterms")
     private WebElement searchField;
 
-    @FindBy(className = "button-1 search-box-button")
+    @FindBy(css = ".button-1.search-box-button")
     private WebElement searchButton;
 
     @FindBy(className = "ico-register")
@@ -25,5 +26,4 @@ public class HomePage extends PageObject {
     public HomePage(final WebDriver driver) {
         super(driver);
     }
-
 }
