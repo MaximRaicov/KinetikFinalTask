@@ -9,7 +9,7 @@ import static utils.ActionUtils.clickOnElement;
 
 public class ProductPageStepDef extends AbstractStepDef {
 
-    ProductPage productPage = new ProductPage(webDriver);
+    private ProductPage productPage = new ProductPage(webDriver);
 
     @Then("^alert message is displayed$")
     public void alertMessageIsDisplayed() {

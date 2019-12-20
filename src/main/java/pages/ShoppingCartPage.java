@@ -1,26 +1,38 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
-import lombok.Getter;
 
 @Getter
 public class ShoppingCartPage extends PageObject {
 
     private String pageUrl = "https://demo.nopcommerce.com/cart";
 
-    @FindBy(xpath = "//input[@id='removefromcart15404']")
-    private WebElement removeCheckboxFromCart;
+    @FindBy(css = ".remove-from-cart input")
+    private WebElement removeCheckBox;
 
-    @FindBy(xpath = "//input[@id='itemquantity15404']")
-    private WebElement qtyFiled;
+    @FindBy(css = ".qty-input")
+    private WebElement quantityField;
 
-    @FindBy(xpath = "//input[@name='updatecart']")
-    private WebElement updateButton;
+    @FindBy(css = ".update-cart-button")
+    private WebElement updateShoppingCartButton;
+
+    @FindBy(css = "a.product-name")
+    private WebElement productName;
+
+    @FindBy(xpath = "//div[@class='no-data']")
+    private WebElement shoppingCartIsEmpty;
+
+    @FindBy(css = ".product-subtotal")
+    private WebElement productsPrice;
+
+    @FindBy(css = ".value-summary strong")
+    private WebElement orderTotalPrice;
 
     public ShoppingCartPage(final WebDriver driver) {
         super(driver);
     }
+
 }

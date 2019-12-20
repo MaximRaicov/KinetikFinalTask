@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public abstract class PageObject {
 
-    @FindBy(css = ".header-menu > .top-menu:first-child")
+    @FindBy(css = ".top-menu:first-child")
     public WebElement categoryForm;
 
     private WebDriver driver;
@@ -18,4 +18,5 @@ public abstract class PageObject {
     }
 
     public abstract String getPageUrl();
+
 }

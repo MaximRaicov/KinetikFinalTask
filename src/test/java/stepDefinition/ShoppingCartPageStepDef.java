@@ -12,7 +12,7 @@ import static utils.ElementSearchUtils.getElementByName;
 
 public class ShoppingCartPageStepDef extends AbstractStepDef {
 
-    ShoppingCartPage shoppingCartPage = new ShoppingCartPage(webDriver);
+    private ShoppingCartPage shoppingCartPage = new ShoppingCartPage(webDriver);
 
     @Then("^'(.*)' product is displayed$")
     public void productIsDisplayed(String product) {
