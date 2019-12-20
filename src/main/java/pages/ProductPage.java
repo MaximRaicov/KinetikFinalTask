@@ -19,7 +19,7 @@ public class ProductPage extends PageObject {
     @FindBy(id = "add-to-cart-button-19")
     private WebElement addToCartButton;
 
-    @FindBy(id = "add-to-wishlist-button-19")
+    @FindBy(id = "add-to-wishlist-button-20")
     private WebElement addToWishButton;
 
     @FindBy(id = "topcartlink")

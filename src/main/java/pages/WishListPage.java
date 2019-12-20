@@ -10,22 +10,34 @@ public class WishListPage extends PageObject {
 
     private String pageUrl = "https://demo.nopcommerce.com/wishlist";
 
-    @FindBy(xpath = "//input[@name='removefromcart']")
-    private WebElement removeCheckBoxFromWishList;
+    @FindBy(css = " .cart tbody tr .remove-from-cart input")
+    private WebElement removefromcartCheckBox;
 
-    @FindBy(xpath = "//input[@name='addtocart']")
-    private WebElement addToCartCheckbox;
+    @FindBy(css = " .cart tbody tr .add-to-cart input")
+    private WebElement addtocartCheckBox;
 
-    @FindBy(xpath = "//input[@name='itemquantity15408']")
-    private WebElement qtyField;
+    @FindBy(className = "qty-input")
+    private WebElement quantityField;
 
-    @FindBy(xpath = "//input[@name='updatecart']")
-    private WebElement updateButton;
+    @FindBy(css = " .wishlist-content form .buttons .update-wishlist-button")
+    private WebElement updatecartButton;
 
-    @FindBy(xpath = "//input[@name='addtocartbutton']")
-    private WebElement addToCartButton;
+    @FindBy(css = " .wishlist-content form .buttons .wishlist-add-to-cart-button")
+    private WebElement addtocartButton;
 
-    public WishListPage(final WebDriver driver) {
+    @FindBy(css  = " .cart tbody tr .product a")
+    private WebElement productName;
+
+    @FindBy(css = " .wishlist-page .page-body .no-data")
+    private WebElement emptyWishlistMessage;
+
+    @FindBy(css  = ".cart tbody")
+    private WebElement checkboxOption;
+
+    @FindBy(css = " .table-wrapper>.cart")
+    private WebElement cartTable;
+
+    public WishListPage(WebDriver driver) {
         super(driver);
     }
 

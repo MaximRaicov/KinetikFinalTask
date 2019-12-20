@@ -35,7 +35,7 @@ public abstract class AbstractStepDef {
     public void waitForPageLoaded() {
         ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").toString().equals("complete");
         try {
-            Thread.sleep(1000);
+            TimeUnit.SECONDS.sleep(1);
             WebDriverWait wait = new WebDriverWait(webDriver, 30);
             wait.until(expectation);
         } catch (Throwable error) {

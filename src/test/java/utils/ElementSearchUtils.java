@@ -1,19 +1,17 @@
 package utils;
 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import pages.PageObject;
+import stepDefinition.AbstractStepDef;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-
-import pages.PageObject;
-import stepDefinition.AbstractStepDef;
-
 public class ElementSearchUtils extends AbstractStepDef {
 
     public static PageObject getPage(String pageName) {
-        Class<?> clazz;
+        Class<?> clazz = null;
         PageObject pageObject = null;
         try {
             clazz = Class.forName("pages.".concat(pageName));
@@ -48,4 +46,5 @@ public class ElementSearchUtils extends AbstractStepDef {
         }
         return webElement;
     }
+
 }
