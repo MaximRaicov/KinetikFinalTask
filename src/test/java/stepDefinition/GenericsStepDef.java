@@ -1,16 +1,16 @@
 package stepDefinition;
 
+import org.openqa.selenium.By;
+
+import static org.hamcrest.CoreMatchers.is;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import pages.CategoryPage;
 import utils.ScenarioContext;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
 import static utils.ActionUtils.clickOnElement;
+import static utils.AssertUtils.assertThat;
 import static utils.ElementSearchUtils.getElementByName;
 import static utils.ElementSearchUtils.getPage;
 
@@ -18,9 +18,8 @@ public class GenericsStepDef extends AbstractStepDef {
 
     @Then("^'(.*)' page is displayed$")
     public void pageIsDisplayed(String pageName) {
-        assertThat(String.format("%s page is not displayed", pageName),
-                webDriver.getCurrentUrl(),
-                is(getPage(pageName.concat("Page")).getPageUrl()));
+        assertThat(String.format("%s page is displayed", pageName),
+                webDriver.getCurrentUrl(), is(getPage(pageName.concat("Page")).getPageUrl()));
         waitForPageLoaded();
     }
 
