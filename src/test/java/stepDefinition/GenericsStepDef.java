@@ -11,8 +11,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import utils.ScenarioContext;
 
-import static utils.ActionUtils.clickOnElement;
-import static utils.ActionUtils.sendKeysToField;
+import static utils.ActionUtils.*;
 import static utils.AssertUtils.assertThat;
 import static utils.AssertUtils.assertTrue;
 import static utils.ElementSearchUtils.getElementByName;
@@ -28,10 +27,19 @@ public class GenericsStepDef extends AbstractStepDef {
     }
 
     @When("^user press on '(.*)' (Button|CheckBox)$")
-    public void userPressOnButton(String elementName, String extension) {
-        implicitlyWait(5);
-        waitUntilElementIsClickable(getElementByName(elementName.concat(extension)));
-        clickOnElement(getElementByName(elementName.concat(extension)));
+    public void userPressButtonCheckbox(String elementName, String extension) {
+        switch (extension) {
+            case "Button":
+                waitUntilElementIsClickable(getElementByName(elementName.concat(extension)));
+                clickOnElement(getElementByName(elementName.concat(extension)));
+                break;
+            case "CheckBox":
+                while (!getElementByName(elementName.concat(extension)).isSelected()) {
+                    waitUntilElementIsClickable(getElementByName(elementName.concat(extension)));
+                    clickOnElement(getElementByName(elementName.concat(extension)));
+                }
+                break;
+        }
     }
 
     @And("^user clicks on '(.*)' (Button|HeaderButton) and move to '(.*)' page$")
@@ -63,5 +71,13 @@ public class GenericsStepDef extends AbstractStepDef {
         waitForPageLoaded();
         waitVisibility(getElementByName(elementName.concat(extension)));
         assertTrue(String.format("%s element is displayed", elementName), getElementByName(elementName.concat(extension)).isDisplayed());
+    }
+
+    @When("^user fills in '(.*)'$")
+    public void fillIn(String itemsQty) {
+        clearTextField(getElementByName("quantityField"));
+        waitForPageLoaded();
+        sendKeysToField(getElementByName("quantityField"), itemsQty);
+        ScenarioContext.setValue("quantity", itemsQty);
     }
 }
