@@ -4,8 +4,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import lombok.extern.log4j.Log4j;
 import pages.ShoppingCartPage;
-import utils.ScenarioContext;
-import utils.TakeScreens;
 import utils.TakeScreens;
 
 import static org.hamcrest.core.Is.is;
@@ -22,13 +20,6 @@ public class ShoppingCartPageStepDef extends AbstractStepDef {
     public void productIsDisplayed(String product) {
         waitForPageLoaded();
         assertThat("The product is found", getElementByName("productName").getText(), is(product));
-        TakeScreens.takeScreenshot(webDriver);
-    }
-
-    @Then("^product quantity changed correct$")
-    public void checkProductQty() {
-        String actualValue = getElementByName("quantityField").getAttribute("value");
-        assertThat("The product quantity matches", ScenarioContext.getValue("quantity"), is(actualValue));
         TakeScreens.takeScreenshot(webDriver);
     }
 

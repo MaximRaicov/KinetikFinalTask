@@ -1,18 +1,17 @@
 package stepDefinition;
 
-import java.util.Map;
-
-import lombok.extern.log4j.Log4j;
-import org.openqa.selenium.By;
-
-import static org.hamcrest.CoreMatchers.is;
-
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import lombok.extern.log4j.Log4j;
+import org.openqa.selenium.By;
 import utils.ScenarioContext;
 import utils.TakeScreens;
 
+import java.util.Map;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static utils.ActionUtils.*;
 import static utils.AssertUtils.assertThat;
 import static utils.AssertUtils.assertTrue;
@@ -21,6 +20,27 @@ import static utils.ElementSearchUtils.getPage;
 
 @Log4j
 public class GenericsStepDef extends AbstractStepDef {
+
+    private String beforeEdit;
+
+    @When("^user changes '(.*)' (Field) with following values:$")
+    public void userChangesField(String elementName, String extension, Map<String, String> data) {
+        waitForPageLoaded();
+        beforeEdit = getElementByName(elementName.concat(extension)).getAttribute("value");
+        data.forEach((key, value) -> clearTextField(getElementByName(key)));
+        data.forEach((key, value) -> sendKeysToField(getElementByName(key), value));
+        log.info(String.format("User changes %s field with following values: %s", elementName, data));
+        TakeScreens.takeScreenshot(webDriver);
+    }
+
+    @Then("^'(.*)' (Field) successfully updated$")
+    public void customerInformationSuccessfullyUpdated(String elementName, String extension) {
+        implicitlyWait(5);
+        final String afterEdit = getElementByName(elementName.concat(extension)).getAttribute("value");
+        assertThat(String.format("Field successfully updated, before edit value: %s\nafter edit value: %s",
+                beforeEdit, afterEdit), afterEdit, is(not(beforeEdit)));
+        TakeScreens.takeScreenshot(webDriver);
+    }
 
     @Then("^'(.*)' page is displayed$")
     public void pageIsDisplayed(String pageName) {
@@ -44,7 +64,7 @@ public class GenericsStepDef extends AbstractStepDef {
                 }
                 break;
         }
-        log.info(String.format("User press on %s %s",elementName, extension));
+        log.info(String.format("User press on %s %s", elementName, extension));
         TakeScreens.takeScreenshot(webDriver);
     }
 
@@ -63,7 +83,7 @@ public class GenericsStepDef extends AbstractStepDef {
                 ScenarioContext.setCurrentPage(getPage(pageName.concat("Page")));
                 break;
         }
-        log.info(String.format("User clicks on %s and move to %s page",elementName,pageName ));
+        log.info(String.format("User clicks on %s and move to %s page", elementName, pageName));
         TakeScreens.takeScreenshot(webDriver);
     }
 
@@ -71,7 +91,7 @@ public class GenericsStepDef extends AbstractStepDef {
     public void userPopulatesFieldsWithFollowingValues(Map<String, String> data) {
         waitForPageLoaded();
         data.forEach((key, value) -> sendKeysToField(getElementByName(key), value));
-        log.info(String.format("User populates fields with following values: %s",data));
+        log.info(String.format("User populates fields with following values: %s", data));
         TakeScreens.takeScreenshot(webDriver);
     }
 
@@ -83,13 +103,4 @@ public class GenericsStepDef extends AbstractStepDef {
         TakeScreens.takeScreenshot(webDriver);
     }
 
-    @When("^user fills in '(.*)'$")
-    public void fillIn(String itemsQty) {
-        clearTextField(getElementByName("quantityField"));
-        waitForPageLoaded();
-        sendKeysToField(getElementByName("quantityField"), itemsQty);
-        ScenarioContext.setValue("quantity", itemsQty);
-        log.info(String.format("User fills in %s", itemsQty));
-        TakeScreens.takeScreenshot(webDriver);
-    }
 }

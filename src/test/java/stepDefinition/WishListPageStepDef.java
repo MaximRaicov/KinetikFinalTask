@@ -2,7 +2,6 @@ package stepDefinition;
 
 import cucumber.api.java.en.Then;
 import pages.WishListPage;
-import utils.ScenarioContext;
 import utils.TakeScreens;
 
 import static org.hamcrest.CoreMatchers.is;
@@ -16,14 +15,6 @@ public class WishListPageStepDef extends AbstractStepDef {
     public void displayProductWishList(String expectedItem) {
         waitForPageLoaded();
         assertThat("The product is found in the WishList", expectedItem, is(wishListPage.getProductName().getText()));
-        TakeScreens.takeScreenshot(webDriver);
-    }
-
-    @Then("^updated product quantity is displayed in the WishList$")
-    public void updatedProductQuantityIsDisplayedInTheWishList() {
-        waitVisibility(wishListPage.getQuantityField());
-        String actual = wishListPage.getQuantityField().getAttribute("value");
-        assertThat("Quantity does not match", ScenarioContext.getValue("quantity"), is(actual));
         TakeScreens.takeScreenshot(webDriver);
     }
 

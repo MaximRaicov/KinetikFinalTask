@@ -1,11 +1,10 @@
 package stepDefinition;
 
-import static org.hamcrest.CoreMatchers.is;
-
 import cucumber.api.java.en.Then;
 import pages.SubCategoryPage;
 import utils.TakeScreens;
 
+import static org.hamcrest.CoreMatchers.is;
 import static utils.AssertUtils.assertThat;
 
 public class SubCategoryPageStepDef extends AbstractStepDef {
