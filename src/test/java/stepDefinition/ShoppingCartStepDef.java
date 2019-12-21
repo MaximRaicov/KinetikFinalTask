@@ -1,15 +1,18 @@
 package stepDefinition;
 
+import static org.hamcrest.CoreMatchers.is;
+
 import cucumber.api.java.en.Then;
-import org.junit.Assert;
 import pages.ShoppingCartPage;
 
-public class ShoppingCartStepDef extends AbstractStepDef{
+import static utils.AssertUtils.assertThat;
 
-    ShoppingCartPage shoppingCartPage = new ShoppingCartPage(webDriver);
+public class ShoppingCartStepDef extends AbstractStepDef {
+
+    private ShoppingCartPage shoppingCartPage = new ShoppingCartPage(webDriver);
 
     @Then("^selected '(.*)' from Wishlist is added successfully to ShoppingCart$")
-    public void clickAddToCartFromWishlist (String expectedItem) {
-        Assert.assertEquals("Selected product is not added to ShoppingCart",expectedItem, shoppingCartPage.getActualItem().getText());
+    public void checkProductAddedToCartFromWishList(String expectedItem) {
+        assertThat("Selected product is added to ShoppingCart", expectedItem, is(shoppingCartPage.getActualItem().getText()));
     }
 }

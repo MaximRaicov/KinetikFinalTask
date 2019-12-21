@@ -2,10 +2,10 @@ package stepDefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
-import org.junit.Assert;
 import pages.ProductPage;
 
 import static utils.ActionUtils.clickOnElement;
+import static utils.AssertUtils.assertTrue;
 
 public class ProductPageStepDef extends AbstractStepDef {
 
@@ -13,7 +13,7 @@ public class ProductPageStepDef extends AbstractStepDef {
 
     @Then("^alert message is displayed$")
     public void alertMessageIsDisplayed() {
-        Assert.assertTrue("The alert message is not displayed", productPage.getAlertMessage().isDisplayed());
+        assertTrue("The alert message is displayed", productPage.getAlertMessage().isDisplayed());
     }
 
     @And("^alert message is closed$")
