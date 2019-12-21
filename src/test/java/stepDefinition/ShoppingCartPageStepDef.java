@@ -1,14 +1,11 @@
 package stepDefinition;
 
-import static org.hamcrest.core.Is.is;
-
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pages.ShoppingCartPage;
 import utils.ScenarioContext;
 
-import static utils.ActionUtils.clearTextField;
-import static utils.ActionUtils.sendKeysToField;
+import static org.hamcrest.core.Is.is;
 import static utils.AssertUtils.assertThat;
 import static utils.AssertUtils.assertTrue;
 import static utils.ElementSearchUtils.getElementByName;
@@ -29,14 +26,6 @@ public class ShoppingCartPageStepDef extends AbstractStepDef {
         assertThat("The product quantity matches", ScenarioContext.getValue("quantity"), is(actualValue));
     }
 
-    @When("^user fills in '(.*)'$")
-    public void fillIn(String itemsQty) {
-        clearTextField(getElementByName("quantityField"));
-        waitUntilElementIsClickable(shoppingCartPage.getQuantityField());
-        sendKeysToField(getElementByName("quantityField"), itemsQty);
-        ScenarioContext.setValue("quantity", itemsQty);
-    }
-
     @When("total products price is displayed correct")
     public void checkTotalPrice() {
         assertThat("Total product price is matched", getElementByName("productsPrice").
@@ -46,6 +35,11 @@ public class ShoppingCartPageStepDef extends AbstractStepDef {
     @When("product is not displayed in Shopping cart")
     public void shoppingCartIsEmpty() {
         assertTrue("The shopping cart is empty", shoppingCartPage.getShoppingCartIsEmpty().isDisplayed());
+    }
+
+    @Then("^selected '(.*)' from Wishlist is added successfully to ShoppingCart$")
+    public void checkProductAddedToCartFromWishList(String expectedItem) {
+        assertThat("Selected product is added to ShoppingCart", expectedItem, is(shoppingCartPage.getActualItem().getText()));
     }
 
 }

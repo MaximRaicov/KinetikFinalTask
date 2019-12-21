@@ -1,11 +1,10 @@
 package stepDefinition;
 
-import static org.hamcrest.CoreMatchers.is;
-
 import cucumber.api.java.en.Then;
 import pages.WishListPage;
 import utils.ScenarioContext;
 
+import static org.hamcrest.CoreMatchers.is;
 import static utils.AssertUtils.assertThat;
 
 public class WishListPageStepDef extends AbstractStepDef {
@@ -30,4 +29,5 @@ public class WishListPageStepDef extends AbstractStepDef {
         waitVisibility(wishListPage.getEmptyWishlistMessage());
         assertThat("Product is removed successfully form WishList", "The wishlist is empty!", is(wishListPage.getEmptyWishlistMessage().getText()));
     }
+
 }
