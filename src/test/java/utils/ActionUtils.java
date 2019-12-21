@@ -10,4 +10,12 @@ public class ActionUtils extends AbstractStepDef {
         element.click();
     }
 
+    public static void clearTextField(WebElement element) {
+        element.clear();
+    }
+
+    public static void sendKeysToField(WebElement element, String value) {
+        element.sendKeys(value);
+    }
+
 }

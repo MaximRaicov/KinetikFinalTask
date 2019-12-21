@@ -11,10 +11,10 @@ import enums.DriverType;
 public class ConfigFileReader {
 
     private Properties properties;
-    private final String propertyFilePath = "src/main/resources/configs/configuration.properties";
 
     public ConfigFileReader() {
         BufferedReader reader;
+        final String propertyFilePath = "src/main/resources/configs/configuration.properties";
         try {
             reader = new BufferedReader(new FileReader(propertyFilePath));
             properties = new Properties();

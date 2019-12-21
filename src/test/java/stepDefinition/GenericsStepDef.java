@@ -1,15 +1,18 @@
 package stepDefinition;
 
+import java.util.Map;
+
+import org.openqa.selenium.By;
+
+import static org.hamcrest.CoreMatchers.is;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.By;
 import utils.ScenarioContext;
 
-import java.util.Map;
-
-import static org.hamcrest.CoreMatchers.is;
 import static utils.ActionUtils.clickOnElement;
+import static utils.ActionUtils.sendKeysToField;
 import static utils.AssertUtils.assertThat;
 import static utils.AssertUtils.assertTrue;
 import static utils.ElementSearchUtils.getElementByName;
@@ -51,7 +54,8 @@ public class GenericsStepDef extends AbstractStepDef {
     @When("^user populates fields with following values:$")
     public void userPopulatesFieldsWithFollowingValues(Map<String, String> data) {
         waitForPageLoaded();
-        data.forEach((key, value) -> getElementByName(key).sendKeys(value));
+        data.forEach((key, value) -> sendKeysToField(getElementByName(key), value));
+
     }
 
     @Then("^'(.*)' (Button|Field|Message|)\\s*is displayed$")

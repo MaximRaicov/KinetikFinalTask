@@ -1,13 +1,15 @@
 package stepDefinition;
 
+import static org.hamcrest.CoreMatchers.is;
+
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import pages.HomePage;
 import pages.SearchPage;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static utils.ActionUtils.clickOnElement;
+import static utils.AssertUtils.assertThat;
 import static utils.ElementSearchUtils.getElementByName;
 import static utils.ElementSearchUtils.getPage;
 import static utils.TestUtils.getPageObjectName;
@@ -27,7 +29,7 @@ public class HomePageStepDef extends AbstractStepDef {
 
     @And("^'SEARCH' button is pressed$")
     public void searchButtonIsPressed() {
-        getElementByName("searchButton").click();
+        clickOnElement(getElementByName("searchButton"));
         getPage(getPageObjectName(SearchPage.class));
     }
 }
