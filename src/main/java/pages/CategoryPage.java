@@ -15,3 +15,4 @@ public class CategoryPage extends PageObject {
         super(driver);
     }
 }
+

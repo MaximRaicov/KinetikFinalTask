@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 
 import cucumber.api.java.en.Then;
 import pages.SearchPage;
+import utils.TakeScreens;
 
 import static utils.AssertUtils.assertTrue;
 import static utils.ElementSearchUtils.getElementByName;
@@ -17,5 +18,7 @@ public class SearchPageStepDef extends AbstractStepDef {
         assertTrue("Search product grid is displayed",
                 getElementByName("searchProductGrid").findElement(By.xpath("//h2[@class='product-title']//a[contains(text(),'" + searchItem + "')]")).isDisplayed());
         getPage(getPageObjectName(SearchPage.class));
+        TakeScreens.takeScreenshot(webDriver);
     }
+
 }

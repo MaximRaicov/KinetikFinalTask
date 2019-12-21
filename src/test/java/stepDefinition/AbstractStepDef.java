@@ -14,7 +14,8 @@ import java.util.concurrent.TimeUnit;
 public abstract class AbstractStepDef {
 
     protected static WebDriver webDriver;
-    ConfigFileReader fileReader = new ConfigFileReader();
+    protected ConfigFileReader fileReader = new ConfigFileReader();
+
     private WebDriverWait wait;
 
     //Wait Wrapper Method
