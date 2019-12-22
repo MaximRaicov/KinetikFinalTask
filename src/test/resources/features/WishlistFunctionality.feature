@@ -15,9 +15,10 @@ Feature: WishLish functionality
     Then product 'Nokia Lumia 1020' is displayed in the WishList
 
   Scenario: Change product quantity in the WishList
-    When user fills in '2'
+    When user changes 'quantity' Field with following values:
+      | quantityField | 5 |
     And user press on 'updatecart' Button
-    Then updated product quantity is displayed in the WishList
+    Then 'quantity' Field successfully updated
 
   Scenario: Remove a product from WishList
     When user press on 'removefromcart' CheckBox
