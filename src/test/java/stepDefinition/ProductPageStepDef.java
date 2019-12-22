@@ -26,7 +26,5 @@ public class ProductPageStepDef extends AbstractStepDef {
         waitForPageLoaded();
         log.info("Alert message is closed");
         TakeScreens.takeScreenshot(webDriver);
-
-
     }
 }

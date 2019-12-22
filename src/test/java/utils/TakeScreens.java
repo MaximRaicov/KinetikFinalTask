@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 import ru.yandex.qatools.ashot.shooting.ShootingStrategies;
+
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
@@ -20,15 +21,13 @@ public class TakeScreens {
     private static DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd_HH_mm_ss");
     private static LocalDateTime now = LocalDateTime.now();
     private static String nowTime = dtf.format(now);
-    private static String destFile = System.getProperty("user.dir") + "/target/screenshots";
-
 
     /**
      *  Copy taken screenshot from source location to destination location
      */
 
     /**
-     *  This attach the specified screenshot to the test
+     * This attach the specified screenshot to the test
      */
     public static void takeScreenshot(WebDriver driver) {
         String timestamp = new SimpleDateFormat("yyyy_MM_dd__hh_mm_ss").format(new Date());
