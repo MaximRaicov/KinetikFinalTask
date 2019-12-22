@@ -1,12 +1,12 @@
 package dataProviders;
 
+import enums.DriverType;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
-
-import enums.DriverType;
 
 public class ConfigFileReader {
 
@@ -60,6 +60,7 @@ public class ConfigFileReader {
         String browserName = properties.getProperty("browser");
         if (browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
         else if (browserName.equals("iexplorer")) return DriverType.INTERNET_EXPLORER;
+        else if (browserName.equals("firefox")) return DriverType.FIREFOX;
         else
             throw new RuntimeException("Browser Name Key value in configuration.properties is not matched : " + browserName);
     }
@@ -70,18 +71,18 @@ public class ConfigFileReader {
         return true;
     }
 
-    public String getReportConfigPath(){
+    public String getReportConfigPath() {
         String reportConfigPath = properties.getProperty("reportConfigPath");
-        if(reportConfigPath!= null) return reportConfigPath;
-        else throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");
+        if (reportConfigPath != null) return reportConfigPath;
+        else
+            throw new RuntimeException("Report Config Path not specified in the Configuration.properties file for the Key:reportConfigPath");
     }
 
-    public String getLogConfigPath(){
+    public String getLogConfigPath() {
         String logConfigPath = properties.getProperty("logConfigPath");
-        if(logConfigPath!= null) {
+        if (logConfigPath != null) {
             return logConfigPath;
-        }
-        else {
+        } else {
             throw new RuntimeException("Log Config Path not specified in the Configuration.properties file for the Key:logConfigPath");
         }
     }

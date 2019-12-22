@@ -16,7 +16,7 @@ public class TestHooks extends AbstractStepDef {
     private WebDriverManager webDriverManager = new WebDriverManager();
 
     @Before
-    public void launchChromeDriver() {
+    public void launchDriver() {
         PropertyConfigurator.configure(fileReader.getLogConfigPath());
         webDriver = webDriverManager.getDriver();
     }
