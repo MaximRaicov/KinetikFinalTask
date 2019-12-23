@@ -2,6 +2,7 @@ package stepDefinition;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import lombok.extern.log4j.Log4j;
 import pages.ProductPage;
 import utils.TakeScreens;
@@ -20,7 +21,7 @@ public class ProductPageStepDef extends AbstractStepDef {
         TakeScreens.takeScreenshot(webDriver);
     }
 
-    @And("^alert message is closed$")
+    @When("^alert message is closed$")
     public void alertMessageIsClosed() {
         clickOnElement(productPage.getCloseAlertMessage());
         waitForPageLoaded();

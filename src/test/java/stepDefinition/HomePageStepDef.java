@@ -27,13 +27,13 @@ public class HomePageStepDef extends AbstractStepDef {
     }
 
     @When("^Search store is populated with '(.*)'$")
-    public void populateSearchField(String searchedItem)  {
+    public void populateSearchField(String searchedItem) {
         getElementByName("searchField").sendKeys(searchedItem);
         log.info(String.format("Search store is populated with %s", searchedItem));
         TakeScreens.takeScreenshot(webDriver);
     }
 
-    @And("^'SEARCH' button is pressed$")
+    @When("^'SEARCH' button is pressed$")
     public void searchButtonIsPressed() {
         clickOnElement(getElementByName("searchButton"));
         getPage(getPageObjectName(SearchPage.class));

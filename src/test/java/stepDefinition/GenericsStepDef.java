@@ -1,6 +1,5 @@
 package stepDefinition;
 
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import lombok.extern.log4j.Log4j;
@@ -68,7 +67,7 @@ public class GenericsStepDef extends AbstractStepDef {
         TakeScreens.takeScreenshot(webDriver);
     }
 
-    @And("^user clicks on '(.*)' (Button|HeaderButton) and move to '(.*)' page$")
+    @When("^user clicks on '(.*)' (Button|HeaderButton) and move to '(.*)' page$")
     public void userClicksOnElementAndMoveToPage(String elementName, String extension, String pageName) {
         waitForPageLoaded();
         switch (extension) {
